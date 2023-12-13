@@ -10,6 +10,7 @@ def post_list(request):
     return render(request, 'post_list.html', {'posts': posts})
 
 
+
 class Crearblogview(View):
     template_name = 'crear_blog.html'
 
@@ -21,7 +22,7 @@ class Crearblogview(View):
         form = PostForm(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
-            post.pub_date = timezone.now()  # Establece la fecha de publicación
+            post.fecha_creacion = timezone.now()
             post.save()
             return redirect('post_list')
 
