@@ -1,6 +1,6 @@
 # blog/urls.py
 from django.urls import path
-from .views import  post_list, Crearblogview,index, about, post, contact
+from .views import  post_list, Crearblogview,index, about, post, contact,PostDetailView
 
 urlpatterns = [
     path('crear_blog/', Crearblogview.as_view(), name='crear_blog'),  
@@ -9,4 +9,5 @@ urlpatterns = [
     path('about/', about, name='about'),
     path('post/', post, name='post'),
     path('contact/', contact, name='contact'),
+    path('post/<int:pk>/', PostDetailView.as_view(), name='post_detail'),
 ]

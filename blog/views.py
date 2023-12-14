@@ -1,9 +1,10 @@
 # blog/views.py
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,get_object_or_404
 from django.views import View
 from django.utils import timezone  # Importa la función timezone
 from .models import Post
 from .forms import PostForm
+from django.views.generic import DetailView
 
 def post_list(request):
     posts = Post.objects.all()
@@ -44,3 +45,16 @@ def post(request):
 
 def contact(request):
     return render(request, 'contact.html')
+
+
+
+
+class PostDetailView(View):
+    template_name = 'post_detail.html'
+
+    def get(self, request, pk):
+        post = get_object_or_404(Post, pk=pk)
+        context = {
+            'post': post,
+        }
+        return render(request, self.template_name, context)
