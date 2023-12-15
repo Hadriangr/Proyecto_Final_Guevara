@@ -32,7 +32,9 @@ class Crearblogview(View):
     
 
 def index(request):
-    return render(request, 'index.html')
+    posts = Post.objects.all()
+    return render(request, 'index.html', {'posts': posts})
+
 
 
 def about(request):

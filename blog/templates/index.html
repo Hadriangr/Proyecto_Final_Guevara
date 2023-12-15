@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Contact Me{% endblock %}
+{% block title %}Home{% endblock %}
 
 {% block header_image %}{% static 'assets/img/home-bg.jpg' %}{% endblock %}
 {% block header_title %}Blogeeks{% endblock %}
@@ -18,7 +18,7 @@
                     <!-- Imagen arriba del texto -->
                     <img src="{% static 'assets/img/about-bg.jpg' %}" alt="Imagen" class="img-fluid mb-3" />
             
-                    <a href="{% url 'post_detail' post.id %}">
+                    <a href="{% url 'post_detail' pk=post.pk %}">
                         <h2 class="post-title">{{ post.titulo }}</h2>
                         <h3 class="post-subtitle">{{ post.subtitulo }}</h3>
                     </a>
@@ -30,19 +30,23 @@
                 </div>
             {% endfor %}
             
-            </div>
-            <!-- Divider-->
-            <hr class="my-4" />
-            <!-- Post preview-->
-            <div class="post-preview">
-                <img src="{% static 'assets/img/about-bg.jpg' %}" alt="Imagen" class="img-fluid mb-3" />
-                <a href="post.html"><h2 class="post-title">I believe every human has a finite number of heartbeats. I don't intend to waste any of mine.</h2></a>
-                <p class="post-meta">
+                </div>
+            
+                <hr class="my-4" />
+                <!-- Post preview-->
+            {% for post in posts %}
+             <div class="post-preview">
+                <a href="{% url 'post_detail' post.id %}">
+                    <h2 class="post-title">{{ post.titulo }}</h2>
+                    <p class="post-subtitle">{{ post.contenido }}</p>
+                </a>
+                    <p class="post-meta">
                     Posted by
-                    <a href="#!">Start Bootstrap</a>
-                    on September 18, 2023
-                </p>
-            </div>
+                    <a href="#!">{{ post.author.username }}</a>
+                    on {{ post.fecha_creacion }}
+                    </p>
+             </div>
+            {% endfor %}
             <!-- Divider-->
             <hr class="my-4" />
             <!-- Post preview-->
