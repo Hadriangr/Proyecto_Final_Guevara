@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+{% block crear %}
+<div>
+    <h2>Error del Servidor (500)</h1>
+    <p>Lo sentimos, algo salió mal en el servidor.</p>
+    <a class="btn btn-primary" href="{% url 'index' %}" class="btn btn-warning">Volver al Inicio</a>
+{% endblock %}

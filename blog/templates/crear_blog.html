@@ -1,9 +1,14 @@
-{% extends 'index.html'%}
-{%block crear%}
-    <h1>Crear un nuevo blog</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Guardar</button>
-    </form>
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Crear Post{% endblock %}
+
+{% block header_image %}{% static 'assets/img/post-sample-image.jpg' %}{% endblock %}
+{% block header_title %}Blogeeks{% endblock %}
+{% block header_subheading %}Crea un nuevo Post{% endblock %}
+{% block crear%}
+<form method="post" action="{% url 'crear_blog' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Guardar</button>
+</form>
 {% endblock %}

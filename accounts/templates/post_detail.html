@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Posts{% endblock %}
+
+{% block header_image %}{% static 'assets/img/home-bg.jpg' %}{% endblock %}
+{% block header_title %}Blogeeks{% endblock %}
+{% block header_subheading %}Crea un nuevo Post{% endblock %}
+
+{% block crear %}
+    
+        <div class="container position-relative px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <div class="post-heading">
+                        <img src="{% static 'assets/img/post-bg.jpg' %}" alt="Imagen" class="img-fluid mb-3" />
+                        <h1>{{ post.titulo }}</h1>
+                        <h2 class="subheading">{{ post.subtitulo }}</h2>
+                        <span class="meta">
+                            Posteado por
+                            <a href="#!">{{ post.author }}</a>
+                            Fecha {{ post.fecha_creacion|date:"F j, Y" }}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <article class="mb-4">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <p>{{ post.contenido }}</p>
+                    <!-- Agrega el contenido específico del post, como imágenes o más texto, según sea necesario -->
+                    <a href="{% url 'index' %}" class="btn btn-primary">Back to Posts</a>
+                </div>
+            </div>
+        </div>
+    </article>
+{% endblock %}

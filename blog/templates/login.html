@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home{% endblock %}
+
+{% block header_image %}{% static 'assets/img/home-bg.jpg' %}{% endblock %}
+{% block header_title %}Blogeeks{% endblock %}
+{% block header_subheading %}Bienvenido{% endblock %}
+
+{% block crear %}
+<div class="FormLogin" >
+  <div class="loginform">
+      <h2>Login</h2>
+  <form method="post" action="{% url 'login' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="buttonLogin text-center">
+      <p><a class="btn btn-primary" href="{% url 'register_request' %}">Regístrate</a></p>
+      <button type="submit" class="btn btn-primary">Acceder</button>
+    </div>
+    </div>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'base.html'%}
+
+{% block crear %}
+  <div class="container">
+    <h2>Bienvenido, {{ user.username }}!</h2>
+    <p>¿Que te gustaría hacer?</p>
+
+    <ul>
+      <li><a href="{% url 'crear_blog' %}">Create a New Post</a></li>
+    </ul>
+  </div>
+{% endblock %}

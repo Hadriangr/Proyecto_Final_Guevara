@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block crear %}
+  <div class="container">
+    <h2>Tus posts, {{ user.username }}!</h2>
+
+    {% if posts %}
+      <ul>
+        {% for post in posts %}
+          <li>
+            <h3><a href="{% url 'post_detail' post.id %}">{{ post.title }}</a></h3>
+            <p>{{ post.content }}</p>
+            <p>Publicado: {{ post.published_date }}</p>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>No has creado posts.</p>
+    {% endif %}
+  </div>
+{% endblock %}
